@@ -3,9 +3,16 @@
 }
 
 .hw {
+    margin: 39px 70px 39px 70px;
 
 }
 
 .hwTitle {
-
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #000000;
+    margin: 39px 0 70px 10px;
 }
