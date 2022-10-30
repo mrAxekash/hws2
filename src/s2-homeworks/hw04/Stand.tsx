@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import s from './Stand.module.css'
 import SuperInputText from './common/c1-SuperInputText/SuperInputText'
 import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
@@ -18,7 +18,16 @@ const Stand = () => {
                     <SuperInputText
                         id={'hw4-super-input-like-old'}
                         value={stateForAllInputs}
-                        onChange={(e) => setValue(e.currentTarget.value)}
+                        error={error}
+                        onChange={(e) => {
+                            setError(
+                                e.currentTarget.value.trim()
+                                    ? ''
+                                    : "Error"
+                            )
+                            setValue(e.currentTarget.value)
+
+                        }}
                     />
                 </div>
                 {/*инпут с ошибкой:*/}
@@ -27,6 +36,7 @@ const Stand = () => {
                         id={'hw4-super-input-with-error'}
                         value={stateForAllInputs}
                         onChangeText={setValue}
+
                         error={error}
                         onEnter={() => {
                             setError(
@@ -34,6 +44,7 @@ const Stand = () => {
                                     ? ''
                                     : 'Error'
                             )
+                            console.log(stateForAllInputs)
                             setValue('')
                         }}
                     />
@@ -43,7 +54,9 @@ const Stand = () => {
             <div className={s.buttons}>
                 {/*обычная кнопка:*/}
                 <div>
-                    <SuperButton id={'hw4-super-button-default'}>
+                    <SuperButton id={'hw4-super-button-default'}
+                                 className={'default'}
+                    >
                         default
                     </SuperButton>
                 </div>
@@ -58,6 +71,7 @@ const Stand = () => {
                     <SuperButton
                         id={'hw4-super-button-disabled'}
                         xType={'red'}
+
                         disabled
                     >
                         disabled
@@ -68,6 +82,7 @@ const Stand = () => {
                     <SuperButton
                         id={'hw4-super-button-secondary'}
                         xType={'secondary'}
+                        className={'secondary'}
                     >
                         secondary
                     </SuperButton>
