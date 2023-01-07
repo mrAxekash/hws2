@@ -38,17 +38,17 @@ const HW8 = () => {
             homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'})
         ) // в алфавитном порядке a.name > b.name
         setCurrentSort('up')
+
     }
 
     const sortDown = () => {
-        setPeople(
-            homeWorkReducer(initialPeople, {type: 'sort', payload: 'down'})
-        ) // в обратном порядке a.name < b.name}
+        setPeople(homeWorkReducer(initialPeople, {type: 'sort', payload: 'down'})) // в обратном порядке a.name < b.name}
         setCurrentSort('down')
     }
     const check18 = () => {
         setPeople(
             homeWorkReducer(initialPeople, {type: 'check', payload: 18})
+            // homeWorkReducer(initialPeople, {type: 'check', payload: 18}).reverse()
         ) // совершеннолетние
         setCurrentSort('18')
     }
