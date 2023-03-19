@@ -7,9 +7,9 @@ import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
 
 /*
-* 1 - дописать SuperPagination
-* 2 - дописать SuperSort
-* 3 - проверить pureChange тестами
+* 1 - дописать SuperPagination //
+* 2 - дописать SuperSort //
+* 3 - проверить pureChange тестами //
 * 3 - дописать sendQuery, onChangePagination, onChangeSort в HW15
 * 4 - сделать стили в соответствии с дизайном
 * 5 - добавить HW15 в HW5/pages/JuniorPlus
@@ -42,7 +42,7 @@ const HW15 = () => {
     const [sort, setSort] = useState('')
     const [page, setPage] = useState(1)
     const [count, setCount] = useState(4)
-    const [idLoading, setLoading] = useState(false)
+    const [idLoading, setLoading] = useState<boolean>(false)
     const [totalCount, setTotalCount] = useState(100)
     const [searchParams, setSearchParams] = useSearchParams()
     const [techs, setTechs] = useState<TechType[]>([])
@@ -52,7 +52,10 @@ const HW15 = () => {
         getTechs(params)
             .then((res) => {
                 // делает студент
-
+                debugger
+                setLoading(false)
+                res && setTechs(res.data.techs)
+                res && setTotalCount(res.data.totalCount)
                 // сохранить пришедшие данные
 
                 //
@@ -61,7 +64,11 @@ const HW15 = () => {
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-
+        debugger
+        setPage(newPage)
+        setCount(newCount)
+        sendQuery({page: newPage, count: newCount})
+        setSearchParams({page: `${newPage}`, count: `${newCount}`, sort})
         // setPage(
         // setCount(
 
@@ -73,6 +80,11 @@ const HW15 = () => {
 
     const onChangeSort = (newSort: string) => {
         // делает студент
+        debugger
+        setSort(newSort)
+        setPage(1)
+        sendQuery({page, count})
+        setSearchParams({page: `${page}`, count: `${count}`, sort: newSort})
 
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу

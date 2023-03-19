@@ -1,9 +1,16 @@
 import React from 'react'
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import HeightIcon from '@material-ui/icons/Height';
 
 // добавить в проект иконки и импортировать
-const downIcon = '[\\/]'
-const upIcon = '[/\\]'
-const noneIcon = '[--]'
+// const downIcon = '[\\/]'
+// const upIcon = '[/\\]'
+//const noneIcon = '[--]'
+
+const downIcon = <ArrowDropDownIcon/>
+const upIcon = <ArrowDropUpIcon/>
+const noneIcon = <HeightIcon/>
 
 export type SuperSortPropsType = {
     id?: string
@@ -14,7 +21,8 @@ export type SuperSortPropsType = {
 
 export const pureChange = (sort: string, down: string, up: string) => {
     // пишет студент, sort: (click) => down (click) => up (click) => '' (click) => down ...
-    return up // исправить
+    return sort === '' ? down : sort === down ? up : sort === up ? '' : down
+    //return up // исправить
 }
 
 const SuperSort: React.FC<SuperSortPropsType> = (
@@ -43,10 +51,11 @@ const SuperSort: React.FC<SuperSortPropsType> = (
             {/*сделать иконку*/}
             {/*<img*/}
             {/*    id={id + '-icon-' + sort}*/}
-            {/*    src={icon}*/}
+            {/*    //src={icon}*/}
             {/*/>*/}
 
             {icon} {/*а это убрать*/}
+
         </span>
     )
 }

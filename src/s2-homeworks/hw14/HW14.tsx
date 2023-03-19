@@ -52,7 +52,7 @@ const HW14 = () => {
 
         //
     }
-
+//[[find, html], [id, 123]] == {find: html, id: 123}
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
         sendQuery(params.find || '')
