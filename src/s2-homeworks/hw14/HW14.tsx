@@ -19,9 +19,9 @@ const getTechs = (find: string) => {
             'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test2',
             {params: {find}}
         )
-        // .catch((e) => {
-        //     alert(e.response?.data?.errorText || e.message)
-        // })
+         .catch((e) => {
+             alert(e.response?.data?.errorText || e.message)
+         })
 }
 
 const HW14 = () => {
@@ -36,7 +36,7 @@ const HW14 = () => {
             .then((res) => {
                 // делает студент
                 setLoading(false)
-                setTechs([...res.data.techs])
+                res && setTechs(res.data.techs)
                 // сохранить пришедшие данные
                 //
             })
