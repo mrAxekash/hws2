@@ -22,7 +22,7 @@ type TechType = {
 }
 
 type ParamsType = {
-    sort: string
+    sort?: string
     page: number
     count: number
 }
@@ -64,7 +64,6 @@ const HW15 = () => {
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-        debugger
         setPage(newPage)
         setCount(newCount)
         sendQuery({page: newPage, count: newCount})
@@ -80,10 +79,9 @@ const HW15 = () => {
 
     const onChangeSort = (newSort: string) => {
         // делает студент
-        debugger
         setSort(newSort)
         setPage(1)
-        sendQuery({page, count})
+        sendQuery({page: page, count: count, sort: newSort})
         setSearchParams({page: `${page}`, count: `${count}`, sort: newSort})
 
         // setSort(
